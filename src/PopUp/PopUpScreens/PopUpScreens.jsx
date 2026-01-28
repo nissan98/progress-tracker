@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { db } from "../../../config/firebaseInitialization"
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoading,isLoading}) {
@@ -6,10 +6,12 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
   const [desc, setDesc] = useState("");
   const [currentDate, setCurrentDate] = useState();
   const [effect, setEffect] = useState(1);
+  const dateRef = useRef();
   useEffect(() => {
     let date = new Date();
     const fullCurrentDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart("2", "0")}-${String(date.getDate()).padStart(2, "0")}`
     setCurrentDate(fullCurrentDate)
+    dateRef.current.value = fullCurrentDate;
   }, []);
 
   const handleForm = async () => {
@@ -45,37 +47,37 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
     <div className="w-full h-full">
       <form className="w-full h-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4 mt-5">
-          <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
             Date
           </label>
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" placeholder="Username"
-            value={currentDate} disabled />
+            ref={dateRef} disabled />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
             Type
           </label>
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Enter type" maxLength={12}
             value={type}
             onChange={(e) => {
-              setType(prev => e.target.value)
+              setType(e.target.value)
             }}
           />
           <p className="text-red-500 text-xs italic hidden">enter type.</p>
         </div>
         <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
             Description
           </label>
           <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5" id="username" type="text" placeholder="Enter description" maxLength={150}
             value={desc}
             onChange={(e) => {
-              setDesc(prev => e.target.value)
+              setDesc(e.target.value)
             }}
           />
         </div>
         <div className="mb-5">
-          <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
             Effect
           </label>
           <div className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-5 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Enter type">

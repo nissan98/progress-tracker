@@ -11,7 +11,7 @@ export default function Card({ date, type, desc, effect, setData, id ,setIsLoadi
         <div className="w-[55%] my-4"> <p className='w-[50%] truncate text-start'>{desc}</p></div>
         <div className='w-[5%] h-full my-4 flex items-center justify-center gap-2'>
           <div className="h-5 w-5 rounded-[50%] transition-opacity hover:opacity-50 " style={{ backgroundColor: (effect) ? "#38a169" : "#e53e3e" }}></div>
-          <svg xmlns="http://www.w3.org" className='w-5 h-5 object-cover hover:opacity-40' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          <svg xmlns="http://www.w3.org" className='w-5 h-5 object-cover hover:opacity-40' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             onClick={async () => {
               setIsLoading(true)
               await deleteDoc(doc(db, 'data', id))

@@ -12,6 +12,7 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true)
     const run = async () => {
       const querySnapshot = await getDocs(query(collection(db, 'data'),orderBy('createdAt','desc')));
       const tempList = [];
@@ -21,8 +22,10 @@ function App() {
         tempList.push(todoData)
       })
       setData(tempList)
+      setIsLoading(false)
     }
     run()
+    
   }, [])
   return (
     <>
