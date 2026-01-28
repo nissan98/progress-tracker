@@ -47,17 +47,17 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
     <div className="w-full h-full">
       <form className="w-full h-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4 mt-5">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label className="block text-gray-700 text-normal  font-bold mb-2" htmlFor="username">
             Date
           </label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" placeholder="Username"
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-semibold" id="username" type="date" placeholder="Username"
             ref={dateRef} disabled />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-gray-700 text-normal font-bold mb-2" htmlFor="password">
             Type
           </label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Enter type" maxLength={12}
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 font-semibold mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text" placeholder="Enter type" maxLength={15}
             value={type}
             onChange={(e) => {
               setType(e.target.value)
@@ -66,10 +66,10 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
           <p className="text-red-500 text-xs italic hidden">enter type.</p>
         </div>
         <div>
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label className="block text-gray-700 text-normal font-bold mb-2" htmlFor="username">
             Description
           </label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5" id="username" type="text" placeholder="Enter description" maxLength={150}
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 font-semibold text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5" id="username" type="text" placeholder="Enter description"
             value={desc}
             onChange={(e) => {
               setDesc(e.target.value)
@@ -77,7 +77,7 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
           />
         </div>
         <div className="mb-5">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-gray-700 text-normal font-bold mb-2" htmlFor="password">
             Effect
           </label>
           <div className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-5 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Enter type">
@@ -86,7 +86,7 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
                 setEffect(1)
               }}
             >Good</button>
-            <div className="bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center" type="button" style={{ backgroundColor: (effect) ? 'gray' : '' }}
+            <div className="bg-red-600 text-white font-bold py-2 px-4 rounded inline-flex items-center " type="button" style={{ backgroundColor: (effect) ? 'gray' : '' }}
               onClick={() => {
                 if (effect) {
                   setEffect(0)
@@ -96,7 +96,7 @@ export default function PopUpScreens({ blurState, setBlurState, setData,setIsLoa
           </div>
         </div>
         <div className="flex items-center justify-end mt-10">
-          <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="button" onClick={handleForm}
+          <button className="bg-gray-300 font-semibold hover:bg-gray-400 text-gray-800  py-2 px-4 rounded inline-flex items-center" type="button" onClick={handleForm}
                   disabled={isLoading}>
             Create
           </button>

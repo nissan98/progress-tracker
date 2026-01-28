@@ -11,6 +11,7 @@ function App() {
   const [blurState, setBlurState] = useState(false)
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [description,setDescription] = useState('')
   useEffect(() => {
     setIsLoading(true)
     const run = async () => {
@@ -36,12 +37,13 @@ function App() {
           onClick={() => {
             if (blurState) {
               setBlurState(!blurState)
+              setDescription('')
             }
           }}>
           <NavBar state={blurState} setState={setBlurState} />
-          <TableCards data={data} setData={setData} isLoading={isLoading} setIsLoading={setIsLoading}/>
+          <TableCards data={data} setData={setData}  setIsLoading={setIsLoading} setBlurState={setBlurState}  setDescription={setDescription}/>
         </div>
-        <PopUp blurState={blurState} setBlurState={setBlurState} setData={setData} setIsLoading={setIsLoading} isLoading={isLoading} />
+        <PopUp blurState={blurState} setBlurState={setBlurState} setData={setData} setIsLoading={setIsLoading} isLoading={isLoading} description={description}/>
         <Loader isLoading={isLoading} />
       </div>
     </>
